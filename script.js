@@ -1,5 +1,5 @@
 // URLs de la API
-const urlback = 'backesp32-jr64.onrender.com';
+const urlback = 'https://backesp32-jr64.onrender.com';
 const ENDPOINTS = {
     uploadEstudiantes: '/upload_estudiantes',
     getEstudiantes: '/get_estudiantes',
