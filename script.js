@@ -1,5 +1,5 @@
 // URLs de la API
-const API_URL = 'backesp32-jr64.onrender.com';
+const urlback = 'backesp32-jr64.onrender.com';
 const ENDPOINTS = {
     uploadEstudiantes: '/upload_estudiantes',
     getEstudiantes: '/get_estudiantes',
@@ -37,7 +37,7 @@ async function handleFileUpload() {
     formData.append('file', file);
 
     try {
-        const response = await fetch(`${API_URL}${ENDPOINTS.uploadEstudiantes}`, {
+        const response = await fetch(`${urlback}${ENDPOINTS.uploadEstudiantes}`, {
             method: 'POST',
             body: formData
         });
@@ -70,7 +70,7 @@ function showStatus(message, type) {
 // Función para cargar la lista de estudiantes
 async function loadStudentsData() {
     try {
-        const response = await fetch(`${API_URL}${ENDPOINTS.getEstudiantes}`);
+        const response = await fetch(`${urlback}${ENDPOINTS.getEstudiantes}`);
         const data = await response.json();
 
         if (data.success && data.data) {
@@ -86,7 +86,7 @@ async function loadStudentsData() {
 // Función para cargar los datos de asistencia
 async function loadAttendanceData() {
     try {
-        const response = await fetch(`${API_URL}${ENDPOINTS.getAsistencia}`);
+        const response = await fetch(`${urlback}${ENDPOINTS.getAsistencia}`);
         const data = await response.json();
 
         if (data.success && data.data) {
