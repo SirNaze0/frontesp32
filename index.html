@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Estudiantes</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistema de Gestión de Asistencias de Estudiantes</h1>
+        </header>
+
+        <section class="upload-section">
+            <h2>Cargar Lista de Estudiantes(Excel o .csv)</h2>
+            <div class="upload-container">
+                <input type="file" id="fileInput" accept=".csv, .xlsx" class="file-input">
+                <button id="uploadButton" class="btn">Subir Archivo</button>
+            </div>
+            <div id="uploadStatus" class="status-message"></div>
+        </section>
+
+        <section class="data-section">
+            <div class="tab-container">
+                <button class="tab-btn active" data-tab="students">Lista de Estudiantes</button>
+                <button class="tab-btn" data-tab="attendance">Registro de Asistencia</button>
+                <button class="tab-btn" data-tab="dailyAttendance">Asistencia Diaria</button>
+                <button class="tab-btn" data-tab="studentsVsAttendance">Estudiantes vs Asistencias</button>
+            </div>
+
+            <!-- Lista de Estudiantes -->
+            <div id="studentsTable" class="table-container active">
+                <h2>Lista de Estudiantes</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código de Estudiante</th>
+                                <th>Nombre</th>
+                                <th>Android ID</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsList"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Registro de Asistencia -->
+            <div id="attendanceTable" class="table-container">
+                <h2>Registro de Asistencia</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Código de Estudiante</th>
+                                <th>Android_id</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendanceList"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Asistencia Diaria -->
+            <div id="dailyAttendanceTable" class="table-container">
+                <h2>Asistencia Diaria</h2>
+                <div id="attendanceDailyChart" class="chart-container">
+                    <canvas id="pieChart" width="400" height="400"></canvas>
+                </div>                             
+            </div>
+
+            <!-- Estudiantes vs Asistencias -->
+            <div id="studentsVsAttendanceTable" class="table-container">
+                <h2>Estudiantes vs Asistencias</h2>
+                <div id="studentsVsAttendanceChart" class="chart-container">
+                    <canvas id="barChart" width="400" height="400"></canvas>
+                </div>
+            </div>                  
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
