@@ -1,5 +1,5 @@
 // URLs de la API
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://backesp32-jr64.onrender.com';
 const ENDPOINTS = {
     uploadEstudiantes: '/upload_estudiantes',
     getEstudiantes: '/get_estudiantes',
