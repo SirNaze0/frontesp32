@@ -1,7 +1,5 @@
 // URLs de la API
-// Detectar si estamos en GitHub Pages o en Vercel/otros entornos
-const isGitHubPages = window.location.hostname === 'sirnaze0.github.io';
-const urlback = isGitHubPages ? 'https://backesp32-jr64.onrender.com' : 'https://backesp32-jr64.onrender.com'; // Puedes usar la misma URL ya que en ambos casos es la misma
+const urlback = 'https://backesp32-jr64.onrender.com';
 const ENDPOINTS = {
     uploadEstudiantes: '/upload_estudiantes',
     getEstudiantes: '/get_estudiantes',
