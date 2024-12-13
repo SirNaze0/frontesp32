@@ -6,7 +6,6 @@
     <title>Sistema de Gestión de Estudiantes</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <base href="https://sirnaze0.github.io/frontesp32/" />
 </head>
 <body>
     <div class="container">
@@ -22,7 +21,31 @@
             </div>
             <div id="uploadStatus" class="status-message"></div>
         </section>
-
+        <div class="container2">
+            <section class="add-student-section">
+                <h2>Añadir Estudiante</h2>
+                <div class="input-group">
+                    <label for="studentCodeInput">Código:</label>
+                    <input type="text" id="studentCodeInput" placeholder="Ingrese el código del estudiante" style="width: 300px;">
+                </div>
+                <div class="input-group">
+                    <label for="studentNameInput">Nombre:</label>
+                    <input type="text" id="studentNameInput" placeholder="Ingrese el nombre del estudiante" style="width: 300px;">
+                </div>
+                <button id="addStudentButton" class="btn">Añadir Estudiante</button>
+                <div id="addStudentStatus" class="status-message"></div>
+            </section>        
+            <section class="delete-student-section">
+                <h2>Eliminar Estudiante</h2>
+                <div class="input-group">
+                    <label for="studentDeleteInput">Código:</label>
+                    <input type="text" id="studentDeleteInput" placeholder="Ingrese el código del estudiante" style="width: 300px;">
+                </div>
+                <button id="deleteStudentButton" class="btn">Eliminar Estudiante</button>
+                <div id="deleteStudentStatus" class="status-message"></div>
+            </section>
+        </div>
+        
         <section class="data-section">
             <div class="tab-container">
                 <button class="tab-btn active" data-tab="students">Lista de Estudiantes</button>

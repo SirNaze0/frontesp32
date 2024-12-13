@@ -15,6 +15,21 @@ body {
     margin: 0 auto;
     padding: 20px;
 }
+.container2 {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espacio entre las secciones */
+    margin: 20px;
+}
+
+.add-student-section,
+.delete-student-section {
+    width: 48%; /* Cada sección ocupa casi la mitad del contenedor */
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
 header {
     text-align: center;

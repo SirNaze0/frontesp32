@@ -14,6 +14,94 @@ const studentsList = document.getElementById('studentsList');
 const attendanceList = document.getElementById('attendanceList');
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tableContainers = document.querySelectorAll('.table-container');
+// Elementos del DOM adicionales
+const addStudentButton = document.getElementById('addStudentButton');
+const studentCodeInput = document.getElementById('studentCodeInput');
+const studentNameInput = document.getElementById('studentNameInput');
+
+// Manejador de eventos para el botón "Añadir Estudiante"
+addStudentButton.addEventListener('click', async () => {
+    const codigoEstudiante = studentCodeInput.value.trim();
+    const nombre = studentNameInput.value.trim();
+
+    if (!codigoEstudiante || !nombre) {
+        showStatus('Por favor, completa ambos campos.', 'error');
+        return;
+    }
+
+    const nuevoEstudiante = {
+        codigo_estudiante: codigoEstudiante,
+        nombre: nombre
+    };
+
+    try {
+        const response = await fetch(`${urlback}/add_estudiante`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(nuevoEstudiante)
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            showStatus('Estudiante añadido correctamente.', 'success');
+            loadStudentsData(); // Recargar la lista de estudiantes
+            studentCodeInput.value = '';
+            studentNameInput.value = '';
+        } else {
+            showStatus(`Error al añadir estudiante: ${data.message}`, 'error');
+        }
+    } catch (error) {
+        showStatus('Error al enviar datos al servidor.', 'error');
+        console.error('Error:', error);
+    }
+});
+document.getElementById('deleteStudentButton').addEventListener('click', () => {
+    const studentCodeInput = document.getElementById('studentDeleteInput');
+    const studentCode = studentCodeInput.value;
+    const statusMessage = document.getElementById('deleteStudentStatus');
+
+    // Verificar que el código no esté vacío
+    if (!studentCode) {
+        statusMessage.textContent = 'Por favor, ingrese un código válido.';
+        statusMessage.style.color = 'red';
+        return;
+    }
+
+    // Configurar la solicitud
+    fetch(`${urlback}/delete_estudiante`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ codigo_estudiante: studentCode }),
+    })
+    .then((response) => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error(`Error en la solicitud: ${response.status}`);
+    })
+    .then((data) => {
+        if (data.success) {
+            statusMessage.textContent = data.message;
+            statusMessage.style.color = 'green';
+            // Limpiar el campo después de una operación exitosa
+            studentCodeInput.value = '';
+            loadStudentsData(); // Llama a la función para actualizar datos
+        } else {
+            statusMessage.textContent = data.message || 'Ocurrió un error.';
+            statusMessage.style.color = 'red';
+        }
+    })
+    .catch((error) => {
+        console.error(error);
+        statusMessage.textContent = 'Error al conectar con el servidor.';
+        statusMessage.style.color = 'red';
+    });
+});
 
 // Manejadores de eventos
 uploadButton.addEventListener('click', handleFileUpload);
