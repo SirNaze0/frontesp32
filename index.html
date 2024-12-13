@@ -9,43 +9,45 @@
 </head>
 <body>
     <div class="container">
-        <header>
+        <header class="header">
             <h1>Sistema de Gestión de Asistencias de Estudiantes</h1>
         </header>
 
         <section class="upload-section">
-            <h2>Cargar Lista de Estudiantes(Excel o .csv)</h2>
+            <h2>Cargar Lista de Estudiantes (Excel o .csv)</h2>
             <div class="upload-container">
                 <input type="file" id="fileInput" accept=".csv, .xlsx" class="file-input">
                 <button id="uploadButton" class="btn">Subir Archivo</button>
             </div>
             <div id="uploadStatus" class="status-message"></div>
         </section>
-        <div class="container2">
+
+        <div class="student-actions">
             <section class="add-student-section">
                 <h2>Añadir Estudiante</h2>
                 <div class="input-group">
                     <label for="studentCodeInput">Código:</label>
-                    <input type="text" id="studentCodeInput" placeholder="Ingrese el código del estudiante" style="width: 300px;">
+                    <input type="text" id="studentCodeInput" placeholder="Ingrese el código del estudiante">
                 </div>
                 <div class="input-group">
                     <label for="studentNameInput">Nombre:</label>
-                    <input type="text" id="studentNameInput" placeholder="Ingrese el nombre del estudiante" style="width: 300px;">
+                    <input type="text" id="studentNameInput" placeholder="Ingrese el nombre del estudiante">
                 </div>
                 <button id="addStudentButton" class="btn">Añadir Estudiante</button>
                 <div id="addStudentStatus" class="status-message"></div>
             </section>        
+
             <section class="delete-student-section">
                 <h2>Eliminar Estudiante</h2>
                 <div class="input-group">
                     <label for="studentDeleteInput">Código:</label>
-                    <input type="text" id="studentDeleteInput" placeholder="Ingrese el código del estudiante" style="width: 300px;">
+                    <input type="text" id="studentDeleteInput" placeholder="Ingrese el código del estudiante">
                 </div>
                 <button id="deleteStudentButton" class="btn">Eliminar Estudiante</button>
                 <div id="deleteStudentStatus" class="status-message"></div>
             </section>
         </div>
-        
+
         <section class="data-section">
             <div class="tab-container">
                 <button class="tab-btn active" data-tab="students">Lista de Estudiantes</button>
@@ -91,20 +93,21 @@
             <!-- Asistencia Diaria -->
             <div id="dailyAttendanceTable" class="table-container">
                 <h2>Asistencia Diaria</h2>
-                <div id="attendanceDailyChart" class="chart-container">
-                    <canvas id="pieChart" width="400" height="400"></canvas>
-                </div>                             
+                <div class="chart-container">
+                    <canvas id="pieChart" width="200" height="200"></canvas>
+                </div>
             </div>
 
             <!-- Estudiantes vs Asistencias -->
             <div id="studentsVsAttendanceTable" class="table-container">
                 <h2>Estudiantes vs Asistencias</h2>
-                <div id="studentsVsAttendanceChart" class="chart-container">
-                    <canvas id="barChart" width="400" height="400"></canvas>
+                <div class="chart-container">
+                    <canvas id="barChart" width="200" height="200"></canvas>
                 </div>
             </div>                  
         </section>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
